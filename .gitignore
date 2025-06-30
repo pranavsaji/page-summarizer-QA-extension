@@ -1,0 +1,12 @@
+# .gitignore
+# Chrome extension build artifacts
+*.crx
+# OS files
+.DS_Store
+Thumbs.db
+
+# node modules (if you ever add a build step)
+node_modules/
+
+# secrets
+src/options.html   # if you ever accidentally hardcode your key here

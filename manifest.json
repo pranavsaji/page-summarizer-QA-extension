@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "PageSummarizer",
+  "version": "1.1.0",
+  "description": "Capture & summarize pages (text + screenshot) via Groq API, view history & ask questions",
+  "icons": {
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "src/background.js"
+  },
+
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "48": "assets/icon.png"
+    }
+  },
+
+  "options_page": "src/options.html",
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/dashboard.html",
+        "src/dashboard.js",
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

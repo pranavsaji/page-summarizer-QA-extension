@@ -1,0 +1,44 @@
+<!-- src/popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PageSummarizer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      width: 220px;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: none;
+      border-radius: 4px;
+      background: #1976d2;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <h1>PageSummarizer</h1>
+  <button id="summarize">Summarize Page</button>
+  <button id="open-dashboard">Open Dashboard</button>
+  <script src="popup.js"></script>
+</body>
+</html>
