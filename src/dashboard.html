@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <title>PageSummarizer Dashboard</title>
   <style>
     * { box-sizing: border-box; }
@@ -12,128 +12,93 @@
       background: #f4f4f4;
     }
     #topbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 48px;
-      background: #1976d2;
-      padding: 0 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-      z-index: 10;
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 48px; background: #1976d2; color: white;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; z-index: 10;
     }
-    #topbar h1 {
-      margin: 0;
-      font-size: 18px;
-    }
+    #topbar h1 { margin: 0; font-size: 18px; }
     #clear-history {
-      background: #e53935;
-      border: none;
-      padding: 6px 12px;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
+      background: #e53935; border: none;
+      padding: 6px 12px; color: white;
+      border-radius: 4px; cursor: pointer; font-size: 14px;
     }
-    #clear-history:hover {
-      background: #c62828;
-    }
+    #clear-history:hover { background: #c62828; }
     #container {
-      display: flex;
-      width: 100%;
-      margin-top: 48px; /* account for topbar */
+      display: flex; width: 100%; margin-top: 48px;
       overflow: hidden;
     }
     #list {
-      width: 30%;
-      background: #fff;
-      border-right: 1px solid #ddd;
-      overflow-y: auto;
+      width: 30%; background: #fff;
+      border-right: 1px solid #ddd; overflow-y: auto;
     }
     #list li {
-      padding: 12px;
-      cursor: pointer;
-      border-bottom: 1px solid #eee;
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 8px 12px;
+      border-bottom: 1px solid #eee; cursor: pointer;
     }
-    #list li:hover {
-      background: #f0f0f0;
+    #list li:hover { background: #f0f0f0; }
+    #list li button {
+      background: none; border: none; font-size: 16px;
+      color: #e53935; cursor: pointer;
     }
     #detail {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
+      flex: 1; overflow-y: auto; padding: 20px;
       background: #fff;
     }
     .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 800px; margin: 0 auto;
+      background: #fff; padding: 20px;
+      border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .card h2 { margin-top: 0; }
     .card img {
-      width: 100%;
-      border-radius: 4px;
-      margin-bottom: 16px;
+      width: 100%; border-radius: 4px; margin-bottom:16px;
     }
-    .card details {
-      margin-bottom: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 10px;
-      background: #fafafa;
+    details {
+      margin-bottom: 16px; border: 1px solid #ccc;
+      border-radius: 4px; padding: 10px; background: #fafafa;
+    }
+    details summary {
+      font-weight: bold; cursor: pointer;
+    }
+    details pre {
+      max-height: 200px; overflow: auto;
+      white-space: pre-wrap; margin-top:8px;
     }
     .qa-history {
-      margin-top: 20px;
-      border-top: 1px solid #eee;
+      margin-top: 20px; border-top: 1px solid #eee;
       padding-top: 12px;
     }
     .qa-history div {
-      margin-bottom: 8px;
-      padding: 8px;
-      background: #f9f9f9;
-      border-radius: 4px;
+      margin-bottom:8px; padding:8px;
+      background:#f9f9f9; border-radius:4px;
     }
-    .qa {
-      display: flex;
-      margin-top: 12px;
-    }
+    .qa { display:flex; margin-top:12px; }
     .qa input {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-right: 8px;
+      flex:1; padding:8px; border:1px solid #ccc;
+      border-radius:4px; margin-right:8px;
     }
     .qa button {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-      background: #1976d2;
-      color: white;
-      cursor: pointer;
+      padding:8px 16px; border:none;
+      border-radius:4px; background:#1976d2;
+      color:white; cursor:pointer;
     }
-    .qa button:hover {
-      background: #1565c0;
-    }
-    #answer {
-      margin-top: 16px;
-      white-space: pre-wrap;
-    }
+    .qa button:hover { background:#1565c0; }
+    #answer { margin-top:16px; white-space: pre-wrap; }
+    #used { margin-top:10px; }
+    #used ul { list-style: disc inside; }
   </style>
 </head>
 <body>
   <div id="topbar">
     <h1>Summaries</h1>
-    <button id="clear-history">Clear History</button>
+    <button id="clear-history">Clear All</button>
   </div>
   <div id="container">
     <ul id="list"></ul>
     <div id="detail">
-      <p style="color:#666;">Select a summary on the left to view details.</p>
+      <p style="color:#666;">Select an entry on the left to view details.</p>
     </div>
   </div>
   <script src="dashboard.js"></script>

@@ -1,21 +1,26 @@
 // src/options.js
 
-// Populate the input with any saved key when the options page loads
+// When the options page loads, populate the inputs with any saved keys.
 document.addEventListener("DOMContentLoaded", async () => {
-  const { groqKey } = await chrome.storage.local.get("groqKey");
-  if (groqKey) {
-    document.getElementById("key").value = groqKey;
-  }
+  const { groqKey = "", hfKey = "" } = await chrome.storage.local.get(["groqKey", "hfKey"]);
+  document.getElementById("groqKey").value = groqKey;
+  document.getElementById("hfKey").value   = hfKey;
 });
 
-// Save the key when the user clicks “Save”
-document.getElementById("save").addEventListener("click", () => {
-  const key = document.getElementById("key").value.trim();
-  if (!key) {
+// Save both keys when the user clicks “Save”
+document.getElementById("save").addEventListener("click", async () => {
+  const groqKey = document.getElementById("groqKey").value.trim();
+  const hfKey   = document.getElementById("hfKey").value.trim();
+
+  if (!groqKey) {
     alert("Please enter a valid Groq API key.");
     return;
   }
-  chrome.storage.local.set({ groqKey: key }, () => {
-    alert("Groq API key saved!");
-  });
+  if (!hfKey) {
+    alert("Please enter a valid Huggingface API key.");
+    return;
+  }
+
+  await chrome.storage.local.set({ groqKey, hfKey });
+  alert("API keys saved!");
 });

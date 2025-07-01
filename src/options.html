@@ -1,17 +1,52 @@
-<!-- src/options.html -->
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Extension Settings</title>
+  <meta charset="utf-8" />
+  <title>PageSummarizer Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      margin-bottom: 12px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 16px;
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #1565c0;
+    }
+  </style>
 </head>
 <body>
   <h1>PageSummarizer Settings</h1>
+
   <label>
     Groq API Key:
-    <input id="key" type="password" placeholder="Enter your key here" style="width: 300px;"/>
+    <input id="groqKey" type="password" placeholder="Enter your Groq key" />
   </label>
+
+  <label>
+    Huggingface API Key:
+    <input id="hfKey" type="password" placeholder="Enter your Huggingface key" />
+  </label>
+
   <button id="save">Save</button>
+
   <script src="options.js"></script>
 </body>
 </html>
